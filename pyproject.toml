@@ -34,6 +34,8 @@ integration = [
     "pydantic-settings>=2.12.0",
     "pytest>=9.0.2",
     "ruff>=0.14.10",
+    "fastapi>=0.100.0",
+    "httpx>=0.28.1",
 ]
 
 
