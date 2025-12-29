@@ -22,7 +22,7 @@ def download():
     if args.all or args.download:
         download_artifacts(settings)
 
-    if args.all or args.export_classifier:
+    if args.all or args.export:
         export_classifier_to_onnx(settings)
         export_model_to_onnx(settings)
 
