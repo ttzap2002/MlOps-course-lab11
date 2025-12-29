@@ -1,10 +1,7 @@
-from fastapi.testclient import TestClient
-from sentiment_app.app import app
+from src.scripts.settings import Settings
 
-client = TestClient(app)
 
-def test_welcome_root():
-    response = client.get("/")
+def test_embedding_dim():
+   settings = Settings()
 
-    assert response.status_code == 200
-    assert response.json() == {"message": "Welcome to the ML API"}
+   assert settings.embedding_dim == 384
