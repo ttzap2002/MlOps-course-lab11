@@ -24,7 +24,7 @@ class SentimentInference:
             self.embedding_session = ort.InferenceSession("model/sentence_transformer.onnx")
             self.classifier_session = ort.InferenceSession("model/classifier.onnx")
         except Exception as e:
-            raise RuntimeError("Failed to access ONNX. Please check the file paths.")
+            raise RuntimeError(f"Failed to access ONNX {e}. Please check the file paths.")
 
     def predict(self, cleaned_text: str) -> str:
         # tokenize input
