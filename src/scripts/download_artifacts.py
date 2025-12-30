@@ -1,5 +1,5 @@
 import boto3
-
+import os
 from settings import Settings
 
 def download_artifacts(settings: Settings):
@@ -12,6 +12,14 @@ def download_artifacts(settings: Settings):
         if obj.key.endswith("/"):
             continue
 
-        bucket.download_file(obj.key, str(target_path))
+        directory = os.path.dirname(target_path)
+        if directory:
+            os.makedirs(directory, exist_ok=True)
+
+        try:
+            bucket.download_file(obj.key, str(target_path))
+        except Exception as e:
+            print(f"Failed to download file {obj.key}: {e}")
+
 
 
