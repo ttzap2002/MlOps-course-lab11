@@ -12,6 +12,9 @@ Resources:
     Type: AWS::Serverless::Function
     Properties:
       PackageType: Image
+      ImageConfig:
+      	EntryPoint: ["/app/.venv/bin/python", "-m", "awslambdaric"]
+      	Command: ["sentiment_app.app.handler"]
       ImageUri: !Ref ImageUri
       Role: !Ref LambdaExecutionRoleArn
       MemorySize: 512
